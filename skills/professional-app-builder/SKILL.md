@@ -23,15 +23,59 @@ Activate this skill when the user asks to:
 
 ## Workflow Overview
 
-This skill follows a strict 5-step pipeline. **Do not skip steps. Do not reorder them.**
+This skill follows a strict 6-step pipeline. **Do not skip steps. Do not reorder them.**
 
 ```
+Step 0: Environment Check       →  scan system, show requirements table, ask approval
 Step 1: Requirements Gathering  →  conversational, one question at a time
 Step 2: Plan Confirmation       →  structured summary, wait for approval
 Step 3: Foundation Setup        →  theme, structure, shared components
 Step 4: Screen-by-Screen Build  →  one screen at a time, confirm each
 Step 5: Validation & Handoff    →  run automated checks, deliver
 ```
+
+---
+
+## Step 0 — Environment Check (MUST RUN FIRST)
+
+**Before asking the user anything about their app, you MUST run this step.**
+
+### Instructions:
+1. Run the following commands to detect what is already installed on the user's system:
+   ```bash
+   node --version
+   npm --version
+   git --version
+   flutter --version
+   ```
+2. Based on the results, build a requirements table in Arabic and display it to the user. Use this exact format:
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║           🔍 فحص بيئة التطوير — Professional App Builder        ║
+╠══════════════╦══════════════╦═══════════════╦════════════════════╣
+║ المتطلب      ║ الحالة       ║ الإصدار المطلوب ║ حجم التحميل      ║
+╠══════════════╬══════════════╬═══════════════╬════════════════════╣
+║ Node.js      ║ [✅ موجود / ❌ غير موجود] ║ v18 أو أحدث  ║ ~35 MB        ║
+║ npm          ║ [✅ موجود / ❌ غير موجود] ║ v9 أو أحدث   ║ مع Node.js    ║
+║ Git          ║ [✅ موجود / ❌ غير موجود] ║ v2.x أو أحدث ║ ~50 MB        ║
+║ Flutter SDK  ║ [✅ موجود / ❌ غير موجود] ║ v3.x أو أحدث ║ ~1.2 GB       ║
+╚══════════════╩══════════════╩═══════════════╩════════════════════╝
+
+📦 إجمالي التحميل المطلوب: [احسب مجموع الأشياء غير الموجودة فقط]
+⏱️  الوقت المتوقع للتثبيت: [قدّر بناءً على ما ينقصه]
+```
+
+3. After displaying the table, ask the user **in Arabic**:
+
+> **"هل تمنحني إذناً لتثبيت المتطلبات الناقصة تلقائياً والمتابعة؟"**
+> - اكتب **"نعم"** للمتابعة والتثبيت التلقائي
+> - اكتب **"لا"** إذا أردت التثبيت اليدوي (وسأزودك بروابط التحميل)
+
+4. **If user approves:** Install missing tools, confirm success, then proceed to Step 1.
+5. **If user declines:** Display download links for all missing tools, and wait for the user to confirm manual installation before proceeding to Step 1.
+
+**IMPORTANT: Do NOT skip this step. Do NOT ask about the app before completing the environment check.**
 
 ---
 
