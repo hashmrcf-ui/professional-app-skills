@@ -3,6 +3,15 @@
 > A library of Agent Skills for building production-grade applications with enforced UX standards.
 > Compatible with Claude Code, Cursor, Gemini CLI, Antigravity, and any agent supporting the [Agent Skills open standard](https://github.com/anthropics/skills).
 
+---
+**🤖 AGENT INSTRUCTIONS (FOR CLAUDE / AI):**
+If the user has just asked you to load the "Professional App Builder" skill by cloning this repository and reading this README, you must do the following immediately:
+1. Read the file `./skills/professional-app-builder/SKILL.md` to learn your new capabilities and rules.
+2. Reply to the user (in Arabic) confirming that the skill has been successfully loaded.
+3. Briefly summarize what you can now do (e.g., build professional Flutter/React apps with high UX standards).
+4. **Immediately initiate Step 1 (Requirements Gathering)** as defined in the `SKILL.md` file by asking the user the first question to start building their app.
+---
+
 ## Skills in This Library
 
 | Skill | Description |
