@@ -198,4 +198,4 @@ See `templates/` folder for project starters:
 
 ## Author
 
-Created and maintained by the open-source community under MIT license.
+Created and designed by Eng. Hashem Jamil.
